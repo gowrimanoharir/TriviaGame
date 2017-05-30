@@ -1,6 +1,10 @@
 var triviagame = {
 	counter: 0, 
-	counterInterval: null, 
+	counterInterval: null,
+	correct: 0,
+	incorrect: 0,
+	unanswered: 0,
+	isTimedOut: null,
 	gameQuestions: {
 		Q1: {
 			question: "question 1",
@@ -19,9 +23,34 @@ var triviagame = {
 		}
 	},
 	userSelection: null,
-	curQuestionInitialize: function(){
+
+	curQuestionInitialize: function(cq){
 		counter=30; 
+		this.isTimedOut=false;
 		counterInterval=setInterval(triviagame.startCounter, 1000);
+		$('#js-question').html(cq.question);
+		for (i=0; i<4; i++){
+			$('#js-answer').append('<p class=\'js-options\' value='+i+'>'+cq.options[i]+'</p>');			
+		}
+	},
+	
+	calcScore: function(cq){
+		if (this.isTimedOut){
+			this.unanswered++;
+			console.log('unans'+this.unanswered);
+		}
+		else if (this.userSelection===cq.answer){
+			console.log(this.userSelection);
+			console.log(cq.answer);
+			this.correct++;
+			console.log('correct'+this.correct);
+		}
+		else{
+			this.incorrect++;
+			console.log('incorrect'+this.incorrect);
+			console.log(this.userSelection);
+			console.log(cq.answer);
+		}
 	},
 
 	startCounter: function (){
@@ -34,20 +63,26 @@ var triviagame = {
 
 	stopCounter: function (){
 		clearInterval(counterInterval);
+		if (counter<=0)
+		{
+			this.isTimedOut=true;
+			console.log('timeout'+this.isTimedOut);
+			this.calcScore();
+		}
 	}
 };
 
-$(document).ready(function(){
-var play=triviagame;
-play.curQuestionInitialize();
-$('#js-question').html(play.gameQuestions.Q1.question);
-for (i=0; i<4; i++){
-	$('#js-answer').append('<p class=\'js-options\' value='+i+'>'+play.gameQuestions.Q1.options[i]+'</p>');
 
-}
-$('.js-options').on('click', function(){
-	play.userSelection=$(this).attr('value');
-	console.log(tmp);
-	play.stopCounter();
-});
+
+$(document).ready(function(){
+	var play=triviagame;
+	var questions=Object.keys(play.gameQuestions);
+	var curQuestion=play.gameQuestions[questions.pop()];
+	play.curQuestionInitialize(curQuestion);
+	
+	$('.js-options').on('click', function(){
+		play.userSelection=curQuestion.options[$(this).attr('value')];
+		play.stopCounter();
+		play.calcScore(curQuestion);
+	});
 });
