@@ -34,22 +34,24 @@ var triviagame = {
 		}
 	},
 	
-	calcScore: function(cq){
+	calcNdisplay: function(cq){
 		if (this.isTimedOut){
 			this.unanswered++;
-			console.log('unans'+this.unanswered);
+			$('#js-answer').empty();
+			$('#js-answer').append('<p class=\'anstxt\'>You ran out of time, it is '+cq.answer+'</p>');
+			$('#js-answer').append('<img class=\'ansimg\'src=\'assets/images/wait.jpg\'>');
 		}
 		else if (this.userSelection===cq.answer){
-			console.log(this.userSelection);
-			console.log(cq.answer);
 			this.correct++;
-			console.log('correct'+this.correct);
+			$('#js-answer').empty();
+			$('#js-answer').append('<p class=\'anstxt\'>You are correct, it is '+cq.answer+'</p>');
+			$('#js-answer').append('<img class=\'ansimg\'src=\'assets/images/win.gif\'>');
 		}
 		else{
 			this.incorrect++;
-			console.log('incorrect'+this.incorrect);
-			console.log(this.userSelection);
-			console.log(cq.answer);
+			$('#js-answer').empty();
+			$('#js-answer').append('<p class=\'anstxt\'>You are incorrect it is '+cq.answer+'</p>');
+			$('#js-answer').append('<img class=\'ansimg\'src=\'assets/images/lose.jpg\'>');
 		}
 	},
 
@@ -67,7 +69,7 @@ var triviagame = {
 		{
 			this.isTimedOut=true;
 			console.log('timeout'+this.isTimedOut);
-			this.calcScore();
+			this.calcNdisplay();
 		}
 	}
 };
@@ -83,6 +85,6 @@ $(document).ready(function(){
 	$('.js-options').on('click', function(){
 		play.userSelection=curQuestion.options[$(this).attr('value')];
 		play.stopCounter();
-		play.calcScore(curQuestion);
+		play.calcNdisplay(curQuestion);
 	});
 });
