@@ -1,4 +1,4 @@
-var play, questions, curQuestion;
+var play, questions, curQuestion, curCat;
 
 
 var triviagame = {
@@ -9,28 +9,47 @@ var triviagame = {
 	unanswered: 0,
 	isTimedOut: null,
 	userSelection: null,
-	gameQuestions: {
-		Q1: {
-			question: "question 1",
-			options: ["1-opt1", "1-opt2", "1-opt3", "1-opt4"],
-			answer: "1-opt1"
-		},
-		Q2: {
-		question: "question 2",
-		options: ["2-opt1", "2-opt2", "2-opt3", "2-opt4"],
-		answer: "2-opt1"
-		},
-		Q3: {
-		question: "question 3",
-		options: ["3-opt1", "3-opt2", "3-opt3", "3-opt4"],
-		answer: "3-opt1"
-		}
+	gameQuestions: 
+	{	cat1: {
+			CQ1: {
+				question: "Cquestion 1",
+				options: ["C1-opt1", "C1-opt2", "C1-opt3", "C1-opt4"],
+				answer: "C1-opt1"
+			},
+			CQ2: {
+			question: "Cquestion 2",
+			options: ["C2-opt1", "C2-opt2", "C2-opt3", "C2-opt4"],
+			answer: "C2-opt1"
+			},
+			CQ3: {
+			question: "Cquestion 3",
+			options: ["C3-opt1", "C3-opt2", "C3-opt3", "C3-opt4"],
+			answer: "C3-opt1"
+			} 
+		}, 
+		cat2: {
+			DQ1: {
+				question: "Dquestion 1",
+				options: ["D1-opt1", "D1-opt2", "D1-opt3", "D1-opt4"],
+				answer: "D1-opt1"
+			},
+			DQ2: {
+			question: "Dquestion 2",
+			options: ["D2-opt1", "D2-opt2", "D2-opt3", "D2-opt4"],
+			answer: "D2-opt1"
+			},
+			DQ3: {
+			question: "question 3",
+			options: ["D3-opt1", "D3-opt2", "D3-opt3", "D3-opt4"],
+			answer: "D3-opt1"
+			} 
+		}, 
 	},
 	
 	gameInitialize: function(){
-		questions=Object.keys(this.gameQuestions);
+		questions=Object.keys(curCat);
 		curQuestion=null;
-		curQuestion= this.gameQuestions[questions.pop()];
+		curQuestion= curCat[questions.pop()];
 		this.correct=0;
 		this.incorrect=0;
 		this.unanswered=0;
@@ -39,6 +58,13 @@ var triviagame = {
 
 	displayStartPg: function(){
 		$('#js-question').html('Select to a Category');
+		$('#js-answer').empty();
+		$('#js-answer').append('<button class=\'btn js-gmbtn\' value=\'cat1\'>Entertainment'+'</button>');		
+		$('#js-answer').append('<button class=\'btn js-gmbtn\' value=\'cat2\'>Technology'+'</button>');		
+		$('#js-answer').on('click', '.js-gmbtn', function(){
+			curCat=play.gameQuestions[$(this).attr('value')];
+			play.gameInitialize();
+		});
 	},
 
 	curQuestionInitialize: function(){
@@ -78,7 +104,7 @@ var triviagame = {
 	changeQuestion: function(){
 		if(questions.length>0)
 		{
-			curQuestion=this.gameQuestions[questions.pop()];
+			curQuestion=curCat[questions.pop()];
 			setTimeout(function(){
 				console.log('i am in');
 				triviagame.curQuestionInitialize();
@@ -124,7 +150,9 @@ $(document).ready(function(){
 	var i=1;
 	
 	play=triviagame;
-	play.gameInitialize();
+	play.displayStartPg();
+	
+
 
 	$('#js-answer').on('click', '.js-options', function(){
 		console.log("this is click "+i);
@@ -137,6 +165,8 @@ $(document).ready(function(){
 
 	$('#js-answer').on('click', '.js-agnbtn', function(){
 		play=triviagame;
-		play.gameInitialize();
+		play.displayStartPg();
 	});
+
+
 });
