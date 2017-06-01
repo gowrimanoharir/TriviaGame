@@ -1,3 +1,6 @@
+var play, questions, curQuestion;
+
+
 var triviagame = {
 	counter: 0, 
 	counterInterval: null,
@@ -5,6 +8,7 @@ var triviagame = {
 	incorrect: 0,
 	unanswered: 0,
 	isTimedOut: null,
+	userSelection: null,
 	gameQuestions: {
 		Q1: {
 			question: "question 1",
@@ -22,37 +26,78 @@ var triviagame = {
 		answer: "3-opt1"
 		}
 	},
-	userSelection: null,
+	
+	gameInitialize: function(){
+		questions=Object.keys(this.gameQuestions);
+		curQuestion=null;
+		curQuestion= this.gameQuestions[questions.pop()];
+		this.correct=0;
+		this.incorrect=0;
+		this.unanswered=0;
+		this.curQuestionInitialize();
+	},
 
-	curQuestionInitialize: function(cq){
+	displayStartPg: function(){
+		$('#js-question').html('Select to a Category');
+	},
+
+	curQuestionInitialize: function(){
 		counter=30; 
 		this.isTimedOut=false;
 		counterInterval=setInterval(triviagame.startCounter, 1000);
-		$('#js-question').html(cq.question);
+		$('#js-question').html(curQuestion.question);
+		$('#js-answer').empty();
 		for (i=0; i<4; i++){
-			$('#js-answer').append('<p class=\'js-options\' value='+i+'>'+cq.options[i]+'</p>');			
+			$('#js-answer').append('<p class=\'js-options\' value='+i+'>'+curQuestion.options[i]+'</p>');			
 		}
 	},
 	
-	calcNdisplay: function(cq){
+	calcNdisplay: function(){
 		if (this.isTimedOut){
 			this.unanswered++;
 			$('#js-answer').empty();
-			$('#js-answer').append('<p class=\'anstxt\'>You ran out of time, it is '+cq.answer+'</p>');
+			$('#js-answer').append('<p class=\'anstxt\'>You ran out of time, it is '+curQuestion.answer+'</p>');
 			$('#js-answer').append('<img class=\'ansimg\'src=\'assets/images/wait.jpg\'>');
 		}
-		else if (this.userSelection===cq.answer){
+		else if (this.userSelection===curQuestion.answer){
 			this.correct++;
 			$('#js-answer').empty();
-			$('#js-answer').append('<p class=\'anstxt\'>You are correct, it is '+cq.answer+'</p>');
+			$('#js-answer').append('<p class=\'anstxt\'>You are correct, it is '+curQuestion.answer+'</p>');
 			$('#js-answer').append('<img class=\'ansimg\'src=\'assets/images/win.gif\'>');
 		}
 		else{
 			this.incorrect++;
 			$('#js-answer').empty();
-			$('#js-answer').append('<p class=\'anstxt\'>You are incorrect it is '+cq.answer+'</p>');
+			$('#js-answer').append('<p class=\'anstxt\'>You are incorrect it is '+curQuestion.answer+'</p>');
 			$('#js-answer').append('<img class=\'ansimg\'src=\'assets/images/lose.jpg\'>');
 		}
+		this.changeQuestion();
+		
+	},
+
+	changeQuestion: function(){
+		if(questions.length>0)
+		{
+			curQuestion=this.gameQuestions[questions.pop()];
+			setTimeout(function(){
+				console.log('i am in');
+				triviagame.curQuestionInitialize();
+			}, 5000);
+		}
+		else{
+			setTimeout(function(){
+				triviagame.gameOver();
+			}, 5000);
+		}
+	},
+
+	gameOver: function(){
+		$('#js-question').html('Thanks for Playing!! Your scores are:');
+		$('#js-answer').empty();
+		$('#js-answer').append('<p class=\'anstxt\'>Correct Answers: '+this.correct+'</p>');		
+		$('#js-answer').append('<p class=\'anstxt\'>Incorrect Answers: '+this.incorrect+'</p>');		
+		$('#js-answer').append('<p class=\'anstxt\'>Unanswered Answers: '+this.unanswered+'</p>');		
+		$('#js-answer').append('<button class=\'btn js-agnbtn\'>Play Again'+'</button>');		
 	},
 
 	startCounter: function (){
@@ -75,16 +120,23 @@ var triviagame = {
 };
 
 
-
 $(document).ready(function(){
-	var play=triviagame;
-	var questions=Object.keys(play.gameQuestions);
-	var curQuestion=play.gameQuestions[questions.pop()];
-	play.curQuestionInitialize(curQuestion);
+	var i=1;
 	
-	$('.js-options').on('click', function(){
+	play=triviagame;
+	play.gameInitialize();
+
+	$('#js-answer').on('click', '.js-options', function(){
+		console.log("this is click "+i);
 		play.userSelection=curQuestion.options[$(this).attr('value')];
+		console.log(play.userSelection);
 		play.stopCounter();
-		play.calcNdisplay(curQuestion);
+		play.calcNdisplay();
+		i++;
+	});
+
+	$('#js-answer').on('click', '.js-agnbtn', function(){
+		play=triviagame;
+		play.gameInitialize();
 	});
 });
