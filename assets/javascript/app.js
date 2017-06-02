@@ -9,6 +9,7 @@ var triviagame = {
 	unanswered: 0,
 	isTimedOut: null,
 	userSelection: null,
+	//Object to store categories of trivia questions
 	gameQuestions: 
 	{	cat1: {
 			CQ1: {
@@ -46,6 +47,7 @@ var triviagame = {
 		}, 
 	},
 	
+	//Initialize variables for each round of the game
 	gameInitialize: function(){
 		questions=Object.keys(curCat);
 		curQuestion=null;
@@ -56,6 +58,7 @@ var triviagame = {
 		this.curQuestionInitialize();
 	},
 
+	//To display the start page with Category buttons
 	displayStartPg: function(){
 		$('#js-question').html('Select to a Category');
 		$('#js-answer').empty();
@@ -67,10 +70,12 @@ var triviagame = {
 		});
 	},
 
+	/*This is to initialize and display the Question 
+	and options*/
 	curQuestionInitialize: function(){
-		counter=30; 
+		this.counter=30; 
 		this.isTimedOut=false;
-		counterInterval=setInterval(triviagame.startCounter, 1000);
+		this.counterInterval=setInterval(triviagame.startCounter, 1000);
 		$('#js-question').html(curQuestion.question);
 		$('#js-answer').empty();
 		for (i=0; i<4; i++){
@@ -78,6 +83,8 @@ var triviagame = {
 		}
 	},
 	
+	/*To display the answer page after each question 
+	is answered or timesout*/
 	calcNdisplay: function(){
 		if (this.isTimedOut){
 			this.unanswered++;
@@ -101,6 +108,9 @@ var triviagame = {
 		
 	},
 
+	/*To set timeout on the answers page and to call 
+	the function to display the next question*/
+
 	changeQuestion: function(){
 		if(questions.length>0)
 		{
@@ -117,6 +127,8 @@ var triviagame = {
 		}
 	},
 
+
+	//To display the final score screen after the end of a round
 	gameOver: function(){
 		$('#js-question').html('Thanks for Playing!! Your scores are:');
 		$('#js-answer').empty();
@@ -126,21 +138,25 @@ var triviagame = {
 		$('#js-answer').append('<button class=\'btn js-agnbtn\'>Play Again'+'</button>');		
 	},
 
+
+	//to decrease the counter and update time display
 	startCounter: function (){
-		$('#js-countdn').html(counter);
-		counter--;
-		if(counter<0){
+		$('#js-countdn').html(triviagame.counter);
+		triviagame.counter--;
+		if(triviagame.counter<0){
 			triviagame.stopCounter();
 		}
 	},
 
+	//to stop the counter once user answers or timed out
 	stopCounter: function (){
-		clearInterval(counterInterval);
-		if (counter<=0)
+		clearInterval(this.counterInterval);
+		this.calcNdisplay();
+		if (triviagame.counter<=0)
 		{
 			this.isTimedOut=true;
 			console.log('timeout'+this.isTimedOut);
-			this.calcNdisplay();
+			
 		}
 	}
 };
@@ -159,7 +175,7 @@ $(document).ready(function(){
 		play.userSelection=curQuestion.options[$(this).attr('value')];
 		console.log(play.userSelection);
 		play.stopCounter();
-		play.calcNdisplay();
+		//play.calcNdisplay();
 		i++;
 	});
 
