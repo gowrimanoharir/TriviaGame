@@ -1,9 +1,10 @@
-var play, questions, curQuestion, curCat;
+var play, questions, curQuestion, curCat, counter, 
+counterInterval, ansTimeout, holdThis;
 
 
 var triviagame = {
-	counter: 0, 
-	counterInterval: null,
+	//counter: 0, 
+	//counterInterval: null,
 	correct: 0,
 	incorrect: 0,
 	unanswered: 0,
@@ -49,6 +50,10 @@ var triviagame = {
 	
 	//Initialize variables for each round of the game
 	gameInitialize: function(){
+		console.log('in gm initialize');
+		counterInterval=null;
+		ansTimeout=null;
+		counter=0;
 		questions=Object.keys(curCat);
 		curQuestion=null;
 		curQuestion= curCat[questions.pop()];
@@ -60,22 +65,29 @@ var triviagame = {
 
 	//To display the start page with Category buttons
 	displayStartPg: function(){
-		$('#js-question').html('Select to a Category');
+		holdThis=this;
+		questions=null;
+		$('#js-question').html('Select a Category');
 		$('#js-answer').empty();
 		$('#js-answer').append('<button class=\'btn js-gmbtn\' value=\'cat1\'>Entertainment'+'</button>');		
 		$('#js-answer').append('<button class=\'btn js-gmbtn\' value=\'cat2\'>Technology'+'</button>');		
 		$('#js-answer').on('click', '.js-gmbtn', function(){
-			curCat=play.gameQuestions[$(this).attr('value')];
-			play.gameInitialize();
+			curCat=holdThis.gameQuestions[$(this).attr('value')];
+			holdThis.gameInitialize();
 		});
 	},
 
 	/*This is to initialize and display the Question 
 	and options*/
 	curQuestionInitialize: function(){
-		this.counter=30; 
+		console.log('in curquest initialize');
+		clearTimeout(ansTimeout);
+		clearInterval(counterInterval);
+		counterInterval=null;
+		ansTimeout=null;
+		counter=30; 
 		this.isTimedOut=false;
-		this.counterInterval=setInterval(triviagame.startCounter, 1000);
+		counterInterval=setInterval(holdThis.startCounter, 1000);
 		$('#js-question').html(curQuestion.question);
 		$('#js-answer').empty();
 		for (i=0; i<4; i++){
@@ -86,6 +98,7 @@ var triviagame = {
 	/*To display the answer page after each question 
 	is answered or timesout*/
 	calcNdisplay: function(){
+		console.log('in calc n display');
 		if (this.isTimedOut){
 			this.unanswered++;
 			$('#js-answer').empty();
@@ -114,15 +127,17 @@ var triviagame = {
 	changeQuestion: function(){
 		if(questions.length>0)
 		{
+			console.log('in chng question next que');
 			curQuestion=curCat[questions.pop()];
-			setTimeout(function(){
+			ansTimeout=setTimeout(function(){
 				console.log('i am in');
-				triviagame.curQuestionInitialize();
+				holdThis.curQuestionInitialize();
 			}, 5000);
 		}
 		else{
-			setTimeout(function(){
-				triviagame.gameOver();
+			console.log('in chng question gameover');
+			ansTimeout=setTimeout(function(){
+				holdThis.gameOver();
 			}, 5000);
 		}
 	},
@@ -130,6 +145,9 @@ var triviagame = {
 
 	//To display the final score screen after the end of a round
 	gameOver: function(){
+		console.log('in gm over');
+		clearInterval(counterInterval);
+		clearTimeout(ansTimeout);
 		$('#js-question').html('Thanks for Playing!! Your scores are:');
 		$('#js-answer').empty();
 		$('#js-answer').append('<p class=\'anstxt\'>Correct Answers: '+this.correct+'</p>');		
@@ -141,23 +159,25 @@ var triviagame = {
 
 	//to decrease the counter and update time display
 	startCounter: function (){
-		$('#js-countdn').html(triviagame.counter);
-		triviagame.counter--;
-		if(triviagame.counter<0){
-			triviagame.stopCounter();
+		console.log('in startcounter');
+		$('#js-countdn').html(counter);
+		counter--;
+		console.log((counter<0))
+		if(counter<0){
+			holdThis.stopCounter();
 		}
 	},
 
 	//to stop the counter once user answers or timed out
 	stopCounter: function (){
-		clearInterval(this.counterInterval);
-		this.calcNdisplay();
-		if (triviagame.counter<=0)
+		clearInterval(counterInterval);
+		console.log('cleared interval');
+		if (counter<=0)
 		{
-			this.isTimedOut=true;
-			console.log('timeout'+this.isTimedOut);
-			
+			holdThis.isTimedOut=true;
+			console.log('timeout'+holdThis.isTimedOut);
 		}
+		holdThis.calcNdisplay();
 	}
 };
 
