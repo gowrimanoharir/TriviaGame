@@ -1,6 +1,10 @@
-var play, counterInterval, ansTimeout, holdThis;
+var play, //variable to store game object
+counterInterval, //variable to store setInterval 
+ansTimeout, //variable to store setTimeout
+holdThis; /*variable to store this reference for each game round to 
+avoid confusion of this in conjunction with jQuery and setInterval/Timeouts*/
 
-
+//Define the game object
 var triviagame = {
 	correct: 0,
 	incorrect: 0,
@@ -37,26 +41,45 @@ var triviagame = {
 				answer: "D1-opt1"
 			},
 			DQ2: {
-			question: "Dquestion 2",
-			options: ["D2-opt1", "D2-opt2", "D2-opt3", "D2-opt4"],
-			answer: "D2-opt1"
+				question: "Dquestion 2",
+				options: ["D2-opt1", "D2-opt2", "D2-opt3", "D2-opt4"],
+				answer: "D2-opt1"
 			},
 			DQ3: {
-			question: "question 3",
-			options: ["D3-opt1", "D3-opt2", "D3-opt3", "D3-opt4"],
-			answer: "D3-opt1"
+				question: "question 3",
+				options: ["D3-opt1", "D3-opt2", "D3-opt3", "D3-opt4"],
+				answer: "D3-opt1"
 			} 
 		}, 
+		cat3: {
+			EQ1: {
+				question: "Dquestion 1",
+				options: ["D1-opt1", "D1-opt2", "D1-opt3", "D1-opt4"],
+				answer: "D1-opt1"
+			},
+			EQ2: {
+				question: "Dquestion 2",
+				options: ["D2-opt1", "D2-opt2", "D2-opt3", "D2-opt4"],
+				answer: "D2-opt1"
+			},
+			EQ3: {
+				question: "question 3",
+				options: ["D3-opt1", "D3-opt2", "D3-opt3", "D3-opt4"],
+				answer: "D3-opt1"
+			} 
+		}
 	},
 	
 	//To display the start page with Category buttons
 	displayStartPg: function(){
 		holdThis=this;
 		holdThis.questions=null;
-		$('#js-question').html('Select a Category');
+		$('#js-question').html(' ');
+		$('#js-timetxt').html('Select a Category');
 		$('#js-answer').empty();
 		$('#js-answer').append('<button class=\'btn js-gmbtn\' value=\'cat1\'>Entertainment'+'</button>');		
-		$('#js-answer').append('<button class=\'btn js-gmbtn\' value=\'cat2\'>Technology'+'</button>');		
+		$('#js-answer').append('<button class=\'btn js-gmbtn\' value=\'cat2\'>Technology'+'</button>');	
+		$('#js-answer').append('<button class=\'btn js-gmbtn\' value=\'cat3\'>Sports'+'</button>');		
 		$('#js-answer').on('click', '.js-gmbtn', function(){
 			holdThis.curCat=holdThis.gameQuestions[$(this).attr('value')];
 			holdThis.gameInitialize();
@@ -75,6 +98,8 @@ var triviagame = {
 		holdThis.incorrect=0;
 		holdThis.unanswered=0;
 		holdThis.curQuestionInitialize();
+		$('#js-timetxt').html('Time Remaining: <span id="js-countdn"></span>');
+
 	},
 
 	/*This is to initialize and display the Question 
@@ -83,8 +108,9 @@ var triviagame = {
 		clearTimeout(ansTimeout);
 		counterInterval=null;
 		ansTimeout=null;
-		holdThis.counter=6; 
+		holdThis.counter=15; 
 		holdThis.isTimedOut=false;
+		$('#js-countdn').html(holdThis.counter);
 		counterInterval=setInterval(function()
 			{
 				holdThis.startCounter();
@@ -143,7 +169,8 @@ var triviagame = {
 
 	//To display the final score screen after the end of a round
 	gameOver: function(){
-		$('#js-question').html('Thanks for Playing!! Your scores are:');
+		$('#js-timetxt').html('Thanks for Playing!!');
+		$('#js-question').html('Your scores are:');
 		$('#js-answer').empty();
 		$('#js-answer').append('<p class=\'anstxt\'>Correct Answers: '+holdThis.correct+'</p>');		
 		$('#js-answer').append('<p class=\'anstxt\'>Incorrect Answers: '+holdThis.incorrect+'</p>');		
@@ -155,7 +182,12 @@ var triviagame = {
 
 	//to decrease the counter and update time display
 	startCounter: function (){
-		$('#js-countdn').html(holdThis.counter);
+		if(holdThis.counter<10){
+			$('#js-countdn').html('0'+holdThis.counter);
+		}
+		else{
+			$('#js-countdn').html(holdThis.counter);
+		}
 		holdThis.counter--;
 		
 		if(holdThis.counter<=0){
