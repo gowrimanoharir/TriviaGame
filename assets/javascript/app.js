@@ -74,12 +74,12 @@ var triviagame = {
 	displayStartPg: function(){
 		holdThis=this;
 		holdThis.questions=null;
-		$('#js-question').html(' ');
-		$('#js-timetxt').html('Select a Category');
+		$('#js-timetxt').html(' ');
+		$('#js-question').html('<h3>Select a Category</h3>');
 		$('#js-answer').empty();
-		$('#js-answer').append('<button class=\'btn js-gmbtn\' value=\'cat1\'>Entertainment'+'</button>');		
-		$('#js-answer').append('<button class=\'btn js-gmbtn\' value=\'cat2\'>Technology'+'</button>');	
-		$('#js-answer').append('<button class=\'btn js-gmbtn\' value=\'cat3\'>Sports'+'</button>');		
+		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat1\'>Entertainment'+'</button>');		
+		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat2\'>Technology'+'</button>');	
+		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat3\'>Sports'+'</button>');		
 		$('#js-answer').on('click', '.js-gmbtn', function(){
 			holdThis.curCat=holdThis.gameQuestions[$(this).attr('value')];
 			holdThis.gameInitialize();
@@ -118,7 +118,7 @@ var triviagame = {
 		$('#js-question').html(holdThis.curQuestion.question);
 		$('#js-answer').empty();
 		for (i=0; i<4; i++){
-			$('#js-answer').append('<p class=\'js-options\' value='+i+'>'+holdThis.curQuestion.options[i]+'</p>');			
+			$('#js-answer').append('<p class=\'js-options optrow\' value='+i+'>'+holdThis.curQuestion.options[i]+'</p>');			
 		}
 	},
 	
