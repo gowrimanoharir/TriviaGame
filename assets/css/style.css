@@ -18,6 +18,7 @@ html,body{
 	min-height: 90%;
 	height: 90%;
 	background-color: #9DB4CB;
+	overflow: auto;
 }
 
 h1{
@@ -34,6 +35,8 @@ h1{
 	font-size: 20px;
 	width: 300px;
 }
+
+
 
 .optrow{
 	text-align: center;

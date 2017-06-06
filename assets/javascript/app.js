@@ -1,8 +1,7 @@
 var play, //variable to store game object
 counterInterval, //variable to store setInterval 
-ansTimeout, //variable to store setTimeout
-holdThis; /*variable to store this reference for each game round to 
-avoid confusion of this in conjunction with jQuery and setInterval/Timeouts*/
+ansTimeout; //variable to store setTimeout
+
 
 //Define the game object
 var triviagame = {
@@ -72,34 +71,32 @@ var triviagame = {
 	
 	//To display the start page with Category buttons
 	displayStartPg: function(){
-		holdThis=this;
-		holdThis.questions=null;
+		this.questions=null;
 		$('#js-timetxt').html(' ');
 		$('#js-question').html('<h3>Select a Category</h3>');
 		$('#js-answer').empty();
 		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat1\'>Entertainment'+'</button>');		
 		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat2\'>Technology'+'</button>');	
 		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat3\'>Sports'+'</button>');		
-		$('#js-answer').on('click', '.js-gmbtn', function(){
-			holdThis.curCat=holdThis.gameQuestions[$(this).attr('value')];
-			holdThis.gameInitialize();
-		});
+		$('#js-answer').on('click', '.js-gmbtn', function(e){
+			this.curCat=this.gameQuestions[e.target.value];
+			this.gameInitialize();
+		}.bind(this));
 
 	},
 
 	//Initialize variables for each round of the game
 	gameInitialize: function(){
 		$('#js-answer').off('click', '.js-gmbtn');
-		holdThis.counter=0;
-		holdThis.questions=Object.keys(holdThis.curCat);
-		holdThis.curQuestion=null;
-		holdThis.curQuestion= holdThis.curCat[holdThis.questions.pop()];
-		holdThis.correct=0;
-		holdThis.incorrect=0;
-		holdThis.unanswered=0;
-		holdThis.curQuestionInitialize();
+		this.counter=0;
+		this.questions=Object.keys(this.curCat);
+		this.curQuestion=null;
+		this.curQuestion= this.curCat[this.questions.pop()];
+		this.correct=0;
+		this.incorrect=0;
+		this.unanswered=0;
+		this.curQuestionInitialize();
 		$('#js-timetxt').html('Time Remaining: <span id="js-countdn"></span>');
-
 	},
 
 	/*This is to initialize and display the Question 
@@ -108,17 +105,17 @@ var triviagame = {
 		clearTimeout(ansTimeout);
 		counterInterval=null;
 		ansTimeout=null;
-		holdThis.counter=15; 
-		holdThis.isTimedOut=false;
-		$('#js-countdn').html(holdThis.counter);
+		this.counter=15; 
+		this.isTimedOut=false;
+		$('#js-countdn').html(this.counter);
 		counterInterval=setInterval(function()
 			{
-				holdThis.startCounter();
-			}, 1000);
-		$('#js-question').html(holdThis.curQuestion.question);
+				this.startCounter();
+			}.bind(this), 1000);
+		$('#js-question').html(this.curQuestion.question);
 		$('#js-answer').empty();
 		for (i=0; i<4; i++){
-			$('#js-answer').append('<p class=\'js-options optrow\' value='+i+'>'+holdThis.curQuestion.options[i]+'</p>');			
+			$('#js-answer').append('<p class=\'js-options optrow\' value='+i+'>'+this.curQuestion.options[i]+'</p>');			
 		}
 	},
 	
@@ -126,25 +123,25 @@ var triviagame = {
 	is answered or timesout*/
 	calcNdisplay: function(){
 		clearInterval(counterInterval);
-		if (holdThis.isTimedOut){
-			holdThis.unanswered++;
+		if (this.isTimedOut){
+			this.unanswered++;
 			$('#js-answer').empty();
-			$('#js-answer').append('<p class=\'anstxt\'>You ran out of time, it is '+holdThis.curQuestion.answer+'</p>');
+			$('#js-answer').append('<p class=\'anstxt\'>You ran out of time, it is '+this.curQuestion.answer+'</p>');
 			$('#js-answer').append('<img class=\'ansimg\'src=\'assets/images/wait.jpg\'>');
 		}
-		else if (holdThis.userSelection===holdThis.curQuestion.answer){
-			holdThis.correct++;
+		else if (this.userSelection===this.curQuestion.answer){
+			this.correct++;
 			$('#js-answer').empty();
-			$('#js-answer').append('<p class=\'anstxt\'>You are correct, it is '+holdThis.curQuestion.answer+'</p>');
+			$('#js-answer').append('<p class=\'anstxt\'>You are correct, it is '+this.curQuestion.answer+'</p>');
 			$('#js-answer').append('<img class=\'ansimg\'src=\'assets/images/win.gif\'>');
 		}
 		else{
-			holdThis.incorrect++;
+			this.incorrect++;
 			$('#js-answer').empty();
-			$('#js-answer').append('<p class=\'anstxt\'>You are incorrect it is '+holdThis.curQuestion.answer+'</p>');
+			$('#js-answer').append('<p class=\'anstxt\'>You are incorrect it is '+this.curQuestion.answer+'</p>');
 			$('#js-answer').append('<img class=\'ansimg\'src=\'assets/images/lose.jpg\'>');
 		}
-		holdThis.changeQuestion();
+		this.changeQuestion();
 		
 	},
 
@@ -152,17 +149,17 @@ var triviagame = {
 	the function to display the next question*/
 
 	changeQuestion: function(){
-		if(holdThis.questions.length>0)
+		if(this.questions.length>0)
 		{
-			holdThis.curQuestion=holdThis.curCat[holdThis.questions.pop()];
+			this.curQuestion=this.curCat[this.questions.pop()];
 			ansTimeout=setTimeout(function(){
-				holdThis.curQuestionInitialize();
-			}, 5000);
+				this.curQuestionInitialize();
+			}.bind(this), 5000);
 		}
 		else{
 			ansTimeout=setTimeout(function(){
-				holdThis.gameOver();
-			}, 5000);
+				this.gameOver();
+			}.bind(this), 5000);
 		}
 	},
 
@@ -172,27 +169,26 @@ var triviagame = {
 		$('#js-timetxt').html('Thanks for Playing!!');
 		$('#js-question').html('Your scores are:');
 		$('#js-answer').empty();
-		$('#js-answer').append('<p class=\'anstxt\'>Correct Answers: '+holdThis.correct+'</p>');		
-		$('#js-answer').append('<p class=\'anstxt\'>Incorrect Answers: '+holdThis.incorrect+'</p>');		
-		$('#js-answer').append('<p class=\'anstxt\'>Unanswered Answers: '+holdThis.unanswered+'</p>');		
-		$('#js-answer').append('<button class=\'btn js-agnbtn\'>Play Again'+'</button>');	
-		holdThis=null;	
+		$('#js-answer').append('<p class=\'anstxt optrow\'>Correct Answers: '+this.correct+'</p>');		
+		$('#js-answer').append('<p class=\'anstxt optrow\'>Incorrect Answers: '+this.incorrect+'</p>');		
+		$('#js-answer').append('<p class=\'anstxt optrow\'>Unanswered Answers: '+this.unanswered+'</p>');		
+		$('#js-answer').append('<button class=\'btn js-agnbtn center-block catbtn\'>Play Again'+'</button>');	
 	},
 
 
 	//to decrease the counter and update time display
 	startCounter: function (){
-		if(holdThis.counter<10){
-			$('#js-countdn').html('0'+holdThis.counter);
+		if(this.counter<10){
+			$('#js-countdn').html('0'+this.counter);
 		}
 		else{
-			$('#js-countdn').html(holdThis.counter);
+			$('#js-countdn').html(this.counter);
 		}
-		holdThis.counter--;
+		this.counter--;
 		
-		if(holdThis.counter<=0){
-			holdThis.isTimedOut=true;
-			holdThis.calcNdisplay();
+		if(this.counter<=0){
+			this.isTimedOut=true;
+			this.calcNdisplay();
 		}
 	},
 
