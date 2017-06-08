@@ -1,6 +1,11 @@
 body{
-	background-color: #3E5C76;
+	/*background-color: #3E5C76;
 	color: #3E5C76;
+	background: #403A3E;  /* fallback for old browsers */
+/*background: -webkitlinear-gradient(to right, #BE5869, #403A3E);  /* Chrome 10-25, Safari 5.1-6 */
+/*background: linear-gradient(to right, #BE5869, #403A3E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background-image: url('../images/background.jpg');
+
 }
 
 html,body{
@@ -14,19 +19,35 @@ html,body{
 }
 
 .jumbotron{
-	margin-top: 30px;
-	min-height: 90%;
-	height: 90%;
-	background-color: #9DB4CB;
+	margin-top: 40px;
+	min-height: 80%;
+	height: 80%;
 	overflow: auto;
+	background: #8e9eab;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to top, #eef2f3, #8e9eab, transparent);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to top, #eef2f3, #8e9eab, transparent); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-h1{
-	margin-top: 10px;
+.hfnt{
+	margin-top: 0px;
+	font-family: 'Russo One', sans-serif;
+	font-size: 50px;
+	color: #ffcc33;
+	font-weight: bold;
 }
 
-.timrow, .qsrow{
+.qtsection{
+	margin-top: 20px;
 	height: 20%;
+}
+
+.qsrow, .timrow{
+	height: 50%;
+	font-size: 25px;
+}
+
+.ansrow{
+	margin-top: 20px;
 }
 
 .catbtn{
@@ -36,15 +57,19 @@ h1{
 	width: 300px;
 }
 
-
-
 .optrow{
 	text-align: center;
 	width: 50%;
 	margin: auto;
+	border-radius: 5px;
 }
 
 .optrow:hover {
-	background-color: #FFF;
+	background-color: #3d72b4;
 	cursor: pointer;
+}
+
+.ansimg{
+	height: 200px;
+	width: 300px;
 }

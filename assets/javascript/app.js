@@ -72,8 +72,8 @@ var triviagame = {
 	//To display the start page with Category buttons
 	displayStartPg: function(){
 		this.questions=null;
-		$('#js-timetxt').html(' ');
-		$('#js-question').html('<h3>Select a Category</h3>');
+		$('#js-timetxt').html('');
+		$('#js-question').html('');
 		$('#js-answer').empty();
 		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat1\'>Entertainment'+'</button>');		
 		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat2\'>Technology'+'</button>');	
@@ -96,7 +96,7 @@ var triviagame = {
 		this.incorrect=0;
 		this.unanswered=0;
 		this.curQuestionInitialize();
-		$('#js-timetxt').html('Time Remaining: <span id="js-countdn"></span>');
+		$('#js-timetxt').html('Time Remaining: <span id="js-countdn">15</span>');
 	},
 
 	/*This is to initialize and display the Question 
@@ -126,20 +126,20 @@ var triviagame = {
 		if (this.isTimedOut){
 			this.unanswered++;
 			$('#js-answer').empty();
-			$('#js-answer').append('<p class=\'anstxt\'>You ran out of time, it is '+this.curQuestion.answer+'</p>');
-			$('#js-answer').append('<img class=\'ansimg\'src=\'assets/images/wait.jpg\'>');
+			$('#js-answer').append('<p class=\'anstxt text-center\'>You ran out of time, it is '+this.curQuestion.answer+'</p>');
+			$('#js-answer').append('<img class=\'ansimg center-block\'src=\'assets/images/wait.jpg\'>');
 		}
 		else if (this.userSelection===this.curQuestion.answer){
 			this.correct++;
 			$('#js-answer').empty();
-			$('#js-answer').append('<p class=\'anstxt\'>You are correct, it is '+this.curQuestion.answer+'</p>');
-			$('#js-answer').append('<img class=\'ansimg\'src=\'assets/images/win.gif\'>');
+			$('#js-answer').append('<p class=\'anstxt text-center\'>You are correct, it is '+this.curQuestion.answer+'</p>');
+			$('#js-answer').append('<img class=\'ansimg center-block\'src=\'assets/images/win.gif\'>');
 		}
 		else{
 			this.incorrect++;
 			$('#js-answer').empty();
-			$('#js-answer').append('<p class=\'anstxt\'>You are incorrect it is '+this.curQuestion.answer+'</p>');
-			$('#js-answer').append('<img class=\'ansimg\'src=\'assets/images/lose.jpg\'>');
+			$('#js-answer').append('<p class=\'anstxt text-center\'>You are incorrect it is '+this.curQuestion.answer+'</p>');
+			$('#js-answer').append('<img class=\'ansimg center-block\'src=\'assets/images/lose.jpg\'>');
 		}
 		this.changeQuestion();
 		
@@ -169,9 +169,9 @@ var triviagame = {
 		$('#js-timetxt').html('Thanks for Playing!!');
 		$('#js-question').html('Your scores are:');
 		$('#js-answer').empty();
-		$('#js-answer').append('<p class=\'anstxt optrow\'>Correct Answers: '+this.correct+'</p>');		
-		$('#js-answer').append('<p class=\'anstxt optrow\'>Incorrect Answers: '+this.incorrect+'</p>');		
-		$('#js-answer').append('<p class=\'anstxt optrow\'>Unanswered Answers: '+this.unanswered+'</p>');		
+		$('#js-answer').append('<p class=\'anstxt text-center\'>Correct Answers: '+this.correct+'</p>');		
+		$('#js-answer').append('<p class=\'anstxt text-center\'>Incorrect Answers: '+this.incorrect+'</p>');		
+		$('#js-answer').append('<p class=\'anstxt text-center\'>Unanswered Answers: '+this.unanswered+'</p>');		
 		$('#js-answer').append('<button class=\'btn js-agnbtn center-block catbtn\'>Play Again'+'</button>');	
 	},
 
