@@ -1,8 +1,13 @@
+/*Setting the background image and font color*/
+
 body{
 	background-image: url('../images/background.jpg');
 	background-size: 100% 100%;
 	color: #FEFFEA;	
 }
+
+
+/*Setting the Minimum height for the content area*/
 
 html,body{
 	height: 100%;
@@ -21,6 +26,8 @@ html,body{
 
 }
 
+/*style the header*/
+
 .hfnt{
 	margin: 15px 0 0 0;
 	font-family: 'Mogra', cursive;
@@ -29,36 +36,7 @@ html,body{
 	color: #FEFFEA;	
 }
 
-
-.timrow{
-	
-	font-size: 35px;
-	
-}
-
-.countdn{
-	font-weight: bolder;
-	color: red;
-}
-
-.qsrow{
-	margin-top: 40px;
-	line-height: 1.5;
-	font-size: 35px;
-	font-weight: bolder;
-	color: black;
-	background-color: #E2E8CE;
-	/*background-color: #BDC2BF;*/
-	/*background-color: #989C94;*/
-	border-radius: 5px;
-}
-
-
-.ansrow{
-	width: 70%;
-	margin-top: 20px;
-}
-
+/*style the Category buttons in the Start page*/
 .catbtn{
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -72,6 +50,38 @@ html,body{
 	background: #FEFFEA;
 }
 
+
+/*style the Time text*/
+.timrow{
+	font-size: 35px;
+}
+
+.countdn{
+	font-weight: bolder;
+	color: red;
+}
+
+/*style the question text*/
+.qsrow{
+	margin-top: 40px;
+	line-height: 1.5;
+	font-size: 35px;
+	font-weight: bolder;
+	color: black;
+	background-color: #E2E8CE;
+	/*background-color: #BDC2BF;*/
+	/*background-color: #989C94;*/
+	border-radius: 5px;
+}
+
+/**set answer section*/
+.ansrow{
+	width: 70%;
+	margin-top: 20px;
+}
+
+
+/*style the options displayed*/
 .optrow{
 	text-align: center;
 	width: 50%;
@@ -79,6 +89,15 @@ html,body{
 	font-size: 35px;
 	border-radius: 5px;
 }
+
+.optrow:hover {
+	background: #FEFFEA;
+	color: black;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+/*style the answer page*/
 
 .ansbk{
 	margin-top: 20px;
@@ -89,18 +108,11 @@ html,body{
 	font-size: 35px;
 }
 
-
-.optrow:hover {
-	background: #FEFFEA;
-	color: black;
-	cursor: pointer;
-	font-weight: bold;
-}
-
 .anstxt{
 	font-size: 40px;
 }
 
+/*style the scores page*/
 .correct{
 	color: #5DBA46;
 }
@@ -116,13 +128,6 @@ html,body{
 .agnbtn{
 	background: #FEFFEA;
 	color: black;
-
-}
-
-.ansimg{
-	margin-top: 15px;
-	height: 250px;
-	width: 400px;
 }
 
 /*Change width and background for footer section*/

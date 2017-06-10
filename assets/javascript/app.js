@@ -77,7 +77,6 @@ var triviagame = {
 				answer: "Canary",
 				description: "Canary is a small songbird in the finch family originating from Macronesian Islands"
 			}	
-
 		}, 
 		cat2: {
 			c2Q1: {
@@ -140,14 +139,13 @@ var triviagame = {
 				answer: "Ada Lovelace",
 				description: ""
 			}																					
-
 		}, 
 		cat3: {
 			c3Q1: {
-				question: "How many hours is the runtime for longest movie "The cure for Insomnia"",
-				options: ["33 Hrs", "12 Hrs", "57 Hrs", "85 Hrs"],
+				question: "Which",
+				options: ["33 Hrs", "72 Hrs", "55 Hrs", "87 Hrs"],
 				answer: "85 Hrs",
-				description: ""
+				description: "The Cure for Insomnia, is a 1987 experimental film is the longest running film according to Guinness World Records"
 			},
 			c3Q2: {
 				question: "Which is the longest running Animated series in TV?",
@@ -156,10 +154,10 @@ var triviagame = {
 				description: ""
 			},
 			c3Q3: {
-				question: "What is the full name of Minnie Mouse?",
-				options: ["Minalla", "Minerva", "Minette", "Mineko"],
-				answer: "Minerva",
-				description: ""
+				question: "What was the name of Nirvana's first album released in 1989?",
+				options: ["Bleach", "In Utero", "Nevermind", "Unplugged"],
+				answer: "Bleach",
+				description: ""				
 			},
 			c3Q4: {
 				question: "Person who voice for Yoda in Star Wars also voiced for which Muppet?",
@@ -180,46 +178,91 @@ var triviagame = {
 				description: ""
 			},
 			c3Q7: {
-				question: "",
-				options: [],
-				answer: "",
+				question: "What is the last name of Bruce Wayne/Batman's butler Alfred?",
+				options: ["Nichols", "Moneypenny", "Pound", "Pennyworth"],
+				answer: "Pennyworth",
 				description: ""
 			},												
 			c3Q8: {
-				question: "",
-				options: [],
-				answer: "",
+				question: "Which was the first animated film to be nominated for an Oscar?",
+				options: ["The Lion King", "Beauty and the Beast", "The Little Mermaid", "Toy Story"],
+				answer: "Beauty and the Beast",
 				description: ""
 			},
 			c3Q9: {
-				question: "",
-				options: [],
-				answer: "",
+				question: "What is the full name of Minnie Mouse?",
+				options: ["Minalla", "Minerva", "Minette", "Mineko"],
+				answer: "Minerva",
 				description: ""
 			},
 			c3Q10: {
-				question: "",
-				options: [],
-				answer: "",
+				question: "What song by Michael Jackson contains the lyrics \'Annie are you OK\'",
+				options: ["Black or White", "Smooth Criminal", "Thriller", "Beat It"],
+				answer: "Smooth Criminal",
 				description: ""
-			},				
+			}				
 		},
 		cat4: {
-			EQ1: {
-				question: "Fquestion 1",
-				options: ["D1-opt1", "D1-opt2", "D1-opt3", "D1-opt4"],
-				answer: "D1-opt1"
+			c4Q1: {
+				question: "Who where the champions in the first season of NHL?",
+				options: ["Toronto Arenas", "Montreal Canadiens", "New York Rangers", "Chicago Black Hawks"],
+				answer: "Toronto Arenas",
+				description: ""
 			},
-			EQ2: {
-				question: "Equestion 2",
-				options: ["D2-opt1", "D2-opt2", "D2-opt3", "D2-opt4"],
-				answer: "D2-opt1"
+			c4Q2: {
+				question: "What is the world's second most popular winter sport?",
+				options: ["Ice Hockey", "Luge", "Bandy", "Figure Skating"],
+				answer: "Bandy",
+				description: ""
 			},
-			EQ3: {
-				question: "Fquestion 3",
-				options: ["D3-opt1", "D3-opt2", "D3-opt3", "D3-opt4"],
-				answer: "D3-opt1"
-			} 
+			c4Q3: {
+				question: "How long is a standard Soccer game played for?",
+				options: ["60 mins", "45 mins", "90 mins", "120 mins"],
+				answer: "90 mins",
+				description: ""
+			},
+			c4Q4: {
+				question: "In Soccer the phrase \'hand of god\' gained popularity due to which player?",
+				options: ["D.Maradona", "L.Messi", "Pele", "T.Miller"],
+				answer: "D.Maradona",
+				description: ""
+			},
+			c4Q5: {
+				question: "Which team has won the most Super Bowl championships?",
+				options: ["Patriots", "Packers", "Steelers", "Giants"],
+				answer: "Steelers",
+				description: ""
+			},	
+			c4Q6: {
+				question: "Which team is the one of the oldest franchise in NFL?",
+				options: ["Jets", "Lions", "Packers", "Cardinals"],
+				answer: "Cardinals",
+				description: ""
+			},
+			c4Q7: {
+				question: "Who was the runners up in the FIFA Women's world cup finals in 2015?",
+				options: ["USA", "Japan", "Germany", "Norway"],
+				answer: "Japan",
+				description: ""
+			},
+			c4Q8: {
+				question: "Which country has the highest wins in FIFA Women's world cup?",
+				options: ["USA", "Japan", "Germany", "Norway"],
+				answer: "USA",
+				description: ""
+			},
+			c4Q9: {
+				question: "Birdie is the phrase used in which sports?",
+				options: ["Badminton", "Ping Pong", "Croquet", "Cricket"],
+				answer: "Badminton",
+				description: ""
+			},	
+			c4Q10: {
+				question: "Who did Cubs win against the world series last before the 2016 season?",
+				options: ["White Sox", "Red Sox", "Giants", "Tigers"],
+				answer: "Tigers",
+				description: ""
+			}																									
 		}
 	},
 	
@@ -231,8 +274,8 @@ var triviagame = {
 		$('#js-answer').empty();
 		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat1\'>Animal World'+'</button>');		
 		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat2\'>Technology'+'</button>');	
-		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat3\'>Sports'+'</button>');		
-		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat4\'>Entertainment'+'</button>');	
+		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat3\'>Entertainment'+'</button>');		
+		$('#js-answer').append('<button class=\'btn js-gmbtn center-block catbtn\' value=\'cat4\'>Sports'+'</button>');	
 		$('#js-answer').on('click', '.js-gmbtn', function(e){
 			this.curCat=this.gameQuestions[e.target.value];
 			this.gameInitialize();
