@@ -29,9 +29,9 @@ html,body{
 /*style the header*/
 
 .hfnt{
-	margin: 15px 0 0 0;
+	margin: 10px 0 0 0;
 	font-family: 'Mogra', cursive;
-	font-size: 50px;
+	font-size: 60px;
 	font-weight: bold;
 	color: #FEFFEA;	
 }
@@ -69,8 +69,6 @@ html,body{
 	font-weight: bolder;
 	color: black;
 	background-color: #E2E8CE;
-	/*background-color: #BDC2BF;*/
-	/*background-color: #989C94;*/
 	border-radius: 5px;
 }
 
@@ -91,7 +89,7 @@ html,body{
 }
 
 .optrow:hover {
-	background: #FEFFEA;
+	background-color: #E2E8CE;
 	color: black;
 	cursor: pointer;
 	font-weight: bold;
@@ -101,8 +99,7 @@ html,body{
 
 .ansbk{
 	margin-top: 20px;
-	/*background: #FEFFEA;*/
-	background-color: #989C94;
+	background-color: #E2E8CE;
 	color: black;	
 	border-radius: 5px;
 	font-size: 35px;

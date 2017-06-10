@@ -14,14 +14,14 @@ var triviagame = {
 	questions: null,
 	curQuestion: null,
 	userSelection: null,	
-	//Object to store categories of trivia questions
+	//Object to store categories of trivia questions & answers
 	gameQuestions: 
 	{	cat1: {
 			C1Q1: {
 				question: "Which whale has a tusk that can grow upto 10ft?",
 				options: ["Beluga", "Narwhal", "Orca", "Sperm"],
 				answer: "Narwhal",
-				description: "Narwhal is a medium-sized whale that lives-year round in Arctic waters, only the male possess the Tusk" 
+				description: "Narwhal is a medium-sized whale that lives year-round in Arctic waters, only the male possess the Tusk" 
 			},
 			C1Q2: {
 				question: "Which of the below is not a marsupial aka mammal without a pouch?",
@@ -39,13 +39,13 @@ var triviagame = {
 				question: "Snakes are...",
 				options: ["Herbivore", "Omnivore", "Carnivore", "Cannibal"],
 				answer: "Carnivore",
-				description: "all varieties of snakes are strictly carnivores, meaning that they feed only on other animals such as rodents, lizards, and even the eggs of other reptiles"
+				description: "All varieties of snakes are strictly carnivores, meaning that they feed only on other animals such as rodents, reptiles, etc"
 			},
 			C1Q5: {
 				question: "Group of Owls are called?",
 				options: ["Congress", "Senate", "Parliament", "House"],
 				answer: "Parliament",
-				description: "They are called a “parliament” as they have long been considered to be of a wise disposition"
+				description: "They are called a “Parliament” as they have long been considered to be of wise disposition"
 			},
 			C1Q6: {
 				question: "Which is the first domesticated animal by Humans?",
@@ -63,7 +63,7 @@ var triviagame = {
 				question: "Which is the Fastest dog in the World?",
 				options: ["Doberman", "Greyhound", "Jack Russel Terrier", "Dalmation"],
 				answer: "Greyhound",
-				description: "Greyhound's can run upto 43MPH and primarily known for their racing background"
+				description: "Greyhounds can run upto 43MPH and primarily known for their racing background"
 			},
 			C1Q9: {
 				question: "Which of the below is not an animal?",
@@ -83,185 +83,185 @@ var triviagame = {
 				question: "Who is the worlds first mobile phone manufacturer?",
 				options: ["Nokia", "Motorola", "Blackberry", "IBM"],
 				answer: "Motorola",
-				description: ""
+				description: "The first mobile phone was demonstrated by Motorola in 1973, using a handset weighing 4.4 lbs (2 kg). In 1983, the DynaTAC 8000x was the first commercially available mobile phone."
 			},
 			c2Q2: {
-				question: "What programming language is Linux written in?",
+				question: "What programming language is Linux kernel written in?",
 				options: ["Perl", "C", "Pascal", "Algol"],
 				answer: "C",
-				description: ""
+				description: "The Linux kernel is written in C programming language, together with short sections of code written in the assembly language"
 			},		
 			c2Q3: {
 				question: "Why does Twitter has 140 char limit?",
-				options: ["Able to view easily in samll screen", "GET method char limit", "Just like that", "To match the SMS"],
-				answer: "To match the SMS",
-				description: ""
+				options: ["To fit in small screens", "GET method char limit", "Duh! its micro blogging", "To match the SMS length"],
+				answer: "To match the SMS length",
+			description: "Twitter was designed in 2006 to be used via wireless carriers’ text-messaging services which are limited to 160 characters. 20 chars was left for username and 140 for the message"
 			},
 			c2Q4: {
 				question: "Who released worlds first Smartphone?",
 				options: ["Blackberry", "IBM", "Apple", "Nokia"],
 				answer: "IBM",
-				description: ""
+				description: "Simon released in 1994 by IBM was the first device that could be referred to as a \"smartphone\", although it was not called that in 1994"
 			},
 			c2Q5: {
 				question: "What was Jeff Bezos original name idea for Amazon website?",
 				options: ["Shazam", "Nile", "Cadabra", "Volga"],
 				answer: "Cadabra",
-				description: ""
+				description: "Amazon was very nearly called \"Cadabra,\" as in \"abracadabra\". Jeff Bezos renamed it when his lawyer misheard the word as \"cadaver\" "
 			},
 			c2Q6: {
 				question: "What did Nintendo orignally manufacture?",
 				options: ["Post Cards", "Playing Cards", "Business Cards", "Greeting Cards"],
 				answer: "Playing Cards",
-				description: ""
+				description: "Nintendo was known as a Japanese toy and playing card manufacturer, in 1983 they released their first console called Famicom"
 			},
 			c2Q7: {
 				question: "Which bird is mascot for Linux?",
 				options: ["Kiwi", "Dove", "Penguin", "Finch"],
 				answer: "Penguin",
-				description: ""
+				description: "The concept of the Linux mascot being a penguin came from Linus Torvalds, the creator of Linux. Tux was created by Larry Ewing in 1996"
 			},
 			c2Q8: {
-				question: "1024 Gigabytes in 1 Terabyte, what is 1024 Terabytes?",
+				question: "1024 Gigabytes is 1 Terabyte, what is 1024 Terabytes?",
 				options: ["Xenobyte", "Petabyte", "Jedabyte", "Qesobyte"],
 				answer: "Petabyte",
-				description: ""
+				description: "The prefix peta indicates the fifth power of 1000 (i.e) 10<sup><small>15</small></sup>. The unit symbol for the petabyte is PB"
 			},	
 			c2Q9: {
 				question: "First web browser is....",
 				options: ["Nexus", "Internet Explorer", "Netscape", "Mosaic"],
 				answer: "Nexus",
-				description: ""
+				description: "The first web browser was invented in 1990 by Sir Tim Berners-Lee. His browser was called WorldWideWeb and later renamed to Nexus"
 			},
 			c2Q10: {
 				question: "World's first programmer is...",
 				options: ["Charles Babbage", "Ada Lovelace", "Michael Faraday", "Grace Hopper"],
 				answer: "Ada Lovelace",
-				description: ""
+				description: "Ada Lovelace was the first to recognize that the machine had applications beyond calculations, and created the first algorithm"
 			}																					
 		}, 
 		cat3: {
 			c3Q1: {
-				question: "Which",
-				options: ["33 Hrs", "72 Hrs", "55 Hrs", "87 Hrs"],
-				answer: "85 Hrs",
-				description: "The Cure for Insomnia, is a 1987 experimental film is the longest running film according to Guinness World Records"
+				question: "Which actor has the most nominations for Oscars?",
+				options: ["Laurence Olivier", "Jack Nicholson", "Paul Newman", "Spencer Tracy"],
+				answer: "Jack Nicholson",
+				description: "He has 12 nominations with 3 wins"
 			},
 			c3Q2: {
 				question: "Which is the longest running Animated series in TV?",
 				options: ["Futurama", "South Park", "The Simpsons", "Family Guy"],
 				answer: "The Simpsons",
-				description: ""
+				description: "The Simpsons debuted in 1989 in FOX network and is still running"
 			},
 			c3Q3: {
 				question: "What was the name of Nirvana's first album released in 1989?",
 				options: ["Bleach", "In Utero", "Nevermind", "Unplugged"],
 				answer: "Bleach",
-				description: ""				
+				description: "Since its release in 1989, Bleach has sold more than 1,900,000 copies in the United States alone"				
 			},
 			c3Q4: {
 				question: "Person who voice for Yoda in Star Wars also voiced for which Muppet?",
-				options: ["Kermit the Frog", "Camilla the Chicken", "Miss Piggy", "Fozzi Bear"],
+				options: ["Kermit the Frog", "Camilla the Chicken", "Miss Piggy", "Scooter"],
 				answer: "Miss Piggy",
-				description: ""
+				description: "Frank Oz is a puppeteer, who has also voiced for  Fozzie Bear, Animal, and Sam Eagle in The Muppets"
 			},
 			c3Q5: {
-				question: "Which of the below movie happen in a fictional country named Sokovia?",
-				options: ["Avengers - Age of Ultron", "Guardians of the Galaxy", "Thor Dark World", "Captain America - The Winter Soldier"],
+				question: "Which of the below movie has a battle in the fictional country named Sokovia?",
+				options: ["Avengers Age of Ultron", "Guardians of the Galaxy", "Thor Dark World", "Captain America Civil War"],
 				answer: "Avengers - Age of Ultron",
-				description: ""
+				description: "Sokovia has a secret underground compound established by HYDRA and Avengers battle Ultron to prevent the place from becoming a Meteor"
 			},
 			c3Q6: {
 				question: "Which is the first A Capella group to win Grammy?",
 				options: ["Rockapella", " The Filharmonic", "Pentatonix", "Straight No Chasers"],
 				answer: "Pentatonix",
-				description: ""
+				description: "Pentatonix (PTX) is a 5 member A Capella group from Arlington, TX"
 			},
 			c3Q7: {
 				question: "What is the last name of Bruce Wayne/Batman's butler Alfred?",
 				options: ["Nichols", "Moneypenny", "Pound", "Pennyworth"],
 				answer: "Pennyworth",
-				description: ""
+				description: "Nothing to see here"
 			},												
 			c3Q8: {
 				question: "Which was the first animated film to be nominated for an Oscar?",
 				options: ["The Lion King", "Beauty and the Beast", "The Little Mermaid", "Toy Story"],
 				answer: "Beauty and the Beast",
-				description: ""
+				description: "Animated films can be nominated for other categories, but have rarely done; Beauty and the Beast (1991) was the first animated film ever nominated for Best Picture."
 			},
 			c3Q9: {
 				question: "What is the full name of Minnie Mouse?",
 				options: ["Minalla", "Minerva", "Minette", "Mineko"],
 				answer: "Minerva",
-				description: ""
+				description: "Though she was first drawn in 1928, she was given her full name only in 1942"
 			},
 			c3Q10: {
 				question: "What song by Michael Jackson contains the lyrics \'Annie are you OK\'",
 				options: ["Black or White", "Smooth Criminal", "Thriller", "Beat It"],
 				answer: "Smooth Criminal",
-				description: ""
+				description: "The lyrics is about a woman named Annie, who has been violently attacked in her apartment by a \"smooth\" assailant"
 			}				
 		},
 		cat4: {
 			c4Q1: {
-				question: "Who where the champions in the first season of NHL?",
+				question: "Who were the champions in the first season of NHL?",
 				options: ["Toronto Arenas", "Montreal Canadiens", "New York Rangers", "Chicago Black Hawks"],
 				answer: "Toronto Arenas",
-				description: ""
+				description: "Toronto Arenas won the championship against Vancouver Millionaires in 1918"
 			},
 			c4Q2: {
 				question: "What is the world's second most popular winter sport?",
 				options: ["Ice Hockey", "Luge", "Bandy", "Figure Skating"],
 				answer: "Bandy",
-				description: ""
+				description: "Bandy is considered a form of hockey and has a common background with association football, ice hockey and field hockey"
 			},
 			c4Q3: {
 				question: "How long is a standard Soccer game played for?",
 				options: ["60 mins", "45 mins", "90 mins", "120 mins"],
 				answer: "90 mins",
-				description: ""
+				description: "Soccer game consists of two periods of 45 minutes each, known as halves with usually a 15-minute half-time break"
 			},
 			c4Q4: {
 				question: "In Soccer the phrase \'hand of god\' gained popularity due to which player?",
 				options: ["D.Maradona", "L.Messi", "Pele", "T.Miller"],
 				answer: "D.Maradona",
-				description: ""
+				description: "\"Hand of God goal\", was scored by Maradona using his hand in 1986 FIFA world cup between Argentina & England"
 			},
 			c4Q5: {
 				question: "Which team has won the most Super Bowl championships?",
 				options: ["Patriots", "Packers", "Steelers", "Giants"],
 				answer: "Steelers",
-				description: ""
+				description: "Pittsburgh Steelers have won the most Super Bowls with six championships"
 			},	
 			c4Q6: {
 				question: "Which team is the one of the oldest franchise in NFL?",
 				options: ["Jets", "Lions", "Packers", "Cardinals"],
 				answer: "Cardinals",
-				description: ""
+				description: "Only two teams currently in the NFL, the Decatur Staleys (now the Chicago Bears) and the Chicago Cardinals (now the Arizona Cardinals), are founding members"
 			},
 			c4Q7: {
 				question: "Who was the runners up in the FIFA Women's world cup finals in 2015?",
 				options: ["USA", "Japan", "Germany", "Norway"],
 				answer: "Japan",
-				description: ""
+				description: "Nothing to see here"
 			},
 			c4Q8: {
 				question: "Which country has the highest wins in FIFA Women's world cup?",
 				options: ["USA", "Japan", "Germany", "Norway"],
 				answer: "USA",
-				description: ""
+				description: "Nothing to see here"
 			},
 			c4Q9: {
 				question: "Birdie is the phrase used in which sports?",
 				options: ["Badminton", "Ping Pong", "Croquet", "Cricket"],
 				answer: "Badminton",
-				description: ""
+				description: "A birdie (also called a bird or shuttlecock) is a high-drag projectile used in the sport of badminton"
 			},	
 			c4Q10: {
 				question: "Who did Cubs win against the world series last before the 2016 season?",
 				options: ["White Sox", "Red Sox", "Giants", "Tigers"],
 				answer: "Tigers",
-				description: ""
+				description: "Prior to 2016 win, the Cubs won the world series in 1907 & 1908 both times against Detroit Tigers"
 			}																									
 		}
 	},
@@ -294,17 +294,16 @@ var triviagame = {
 		this.incorrect=0;
 		this.unanswered=0;
 		this.curQuestionInitialize();
-		$('#js-timetxt').html('Time Remaining: <span id="js-countdn" class="countdn">30</span>');
+		$('#js-timetxt').html('Time Remaining: <span id="js-countdn" class="countdn">20</span>');
 		
 	},
 
-	/*This is to initialize and display the Question 
-	and options*/
+	/*Initialize and display the Question and options*/
 	curQuestionInitialize: function(){
 		clearTimeout(ansTimeout);
 		counterInterval=null;
 		ansTimeout=null;
-		this.counter=30; 
+		this.counter=20; 
 		this.isTimedOut=false;
 		$('#js-countdn').html(this.counter);
 		counterInterval=setInterval(function()
@@ -319,7 +318,7 @@ var triviagame = {
 	},
 	
 	/*To display the answer page after each question 
-	is answered or timesout*/
+	is answered or timedout*/
 	calcNdisplay: function(){
 		clearInterval(counterInterval);
 		if (this.isTimedOut){
@@ -353,12 +352,12 @@ var triviagame = {
 			this.curQuestion=this.curCat[this.questions.pop()];
 			ansTimeout=setTimeout(function(){
 				this.curQuestionInitialize();
-			}.bind(this), 5000);
+			}.bind(this), 6000);
 		}
 		else{
 			ansTimeout=setTimeout(function(){
 				this.gameOver();
-			}.bind(this), 5000);
+			}.bind(this), 6000);
 		}
 	},
 
