@@ -1,75 +1,132 @@
 body{
-	/*background-color: #3E5C76;
-	color: #3E5C76;
-	background: #403A3E;  /* fallback for old browsers */
-/*background: -webkitlinear-gradient(to right, #BE5869, #403A3E);  /* Chrome 10-25, Safari 5.1-6 */
-/*background: linear-gradient(to right, #BE5869, #403A3E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	background-image: url('../images/background.jpg');
-
+	background-size: 100% 100%;
+	color: #FEFFEA;	
 }
 
 html,body{
 	height: 100%;
 }
 
-.main-content{
+.cntr{
 	min-height: 100%;
 	height: 100%;
-	margin-bottom: 0;
+	overflow: auto;
 }
 
-.jumbotron{
-	margin-top: 40px;
-	min-height: 80%;
-	height: 80%;
-	overflow: auto;
-	background: #8e9eab;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to top, #eef2f3, #8e9eab, transparent);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to top, #eef2f3, #8e9eab, transparent); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.main-content{
+	min-height: 70%;
+	height: 70%;
+	margin: 50px auto;
+
 }
 
 .hfnt{
-	margin-top: 0px;
-	font-family: 'Russo One', sans-serif;
+	margin: 15px 0 0 0;
+	font-family: 'Mogra', cursive;
 	font-size: 50px;
-	color: #ffcc33;
 	font-weight: bold;
+	color: #FEFFEA;	
 }
 
-.qtsection{
-	margin-top: 20px;
-	height: 20%;
+
+.timrow{
+	
+	font-size: 35px;
+	
 }
 
-.qsrow, .timrow{
-	height: 50%;
-	font-size: 25px;
+.countdn{
+	font-weight: bolder;
+	color: red;
 }
+
+.qsrow{
+	margin-top: 40px;
+	line-height: 1.5;
+	font-size: 35px;
+	font-weight: bolder;
+	color: black;
+	/*background-color: #E2E8CE;*/
+	/*background-color: #BDC2BF;*/
+	background-color: #989C94;
+	border-radius: 5px;
+}
+
 
 .ansrow{
+	width: 70%;
 	margin-top: 20px;
 }
 
 .catbtn{
 	margin-top: 20px;
 	margin-bottom: 20px;
-	font-size: 20px;
-	width: 300px;
+	font-size: 40px;
+	width: 50%;
+	background: none;
+	font-weight: bold;
+}
+
+.catbtn:hover{
+	background: #FEFFEA;
 }
 
 .optrow{
 	text-align: center;
 	width: 50%;
-	margin: auto;
+	margin: 10px auto;
+	font-size: 35px;
 	border-radius: 5px;
 }
 
+.ansbk{
+	margin-top: 20px;
+	/*background: #FEFFEA;*/
+	background-color: #989C94;
+	color: black;	
+	border-radius: 5px;
+	font-size: 35px;
+}
+
+
 .optrow:hover {
-	background-color: #3d72b4;
+	background: #FEFFEA;
+	color: black;
 	cursor: pointer;
+	font-weight: bold;
+}
+
+.anstxt{
+	font-size: 40px;
+}
+
+.correct{
+	color: #5DBA46;
+}
+
+.incorrect{
+	color: red;
+}
+
+.unanswered{
+	color: #FFFD77;
+}
+
+.agnbtn{
+	background: #FEFFEA;
+	color: black;
+
 }
 
 .ansimg{
-	height: 200px;
-	width: 300px;
+	margin-top: 15px;
+	height: 250px;
+	width: 400px;
+}
+
+/*Change width and background for footer section*/
+.footer{
+	width: 100%;
+	padding-top: 5px;
 }
