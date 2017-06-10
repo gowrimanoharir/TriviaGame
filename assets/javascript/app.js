@@ -80,38 +80,129 @@ var triviagame = {
 
 		}, 
 		cat2: {
-			DQ1: {
-				question: "Dquestion 1",
-				options: ["D1-opt1", "D1-opt2", "D1-opt3", "D1-opt4"],
-				answer: "D1-opt1"
+			c2Q1: {
+				question: "Who is the worlds first mobile phone manufacturer?",
+				options: ["Nokia", "Motorola", "Blackberry", "IBM"],
+				answer: "Motorola",
+				description: ""
 			},
-			DQ2: {
-				question: "Dquestion 2",
-				options: ["D2-opt1", "D2-opt2", "D2-opt3", "D2-opt4"],
-				answer: "D2-opt1"
+			c2Q2: {
+				question: "What programming language is Linux written in?",
+				options: ["Perl", "C", "Pascal", "Algol"],
+				answer: "C",
+				description: ""
+			},		
+			c2Q3: {
+				question: "Why does Twitter has 140 char limit?",
+				options: ["Able to view easily in samll screen", "GET method char limit", "Just like that", "To match the SMS"],
+				answer: "To match the SMS",
+				description: ""
 			},
-			DQ3: {
-				question: "question 3",
-				options: ["D3-opt1", "D3-opt2", "D3-opt3", "D3-opt4"],
-				answer: "D3-opt1"
-			} 
+			c2Q4: {
+				question: "Who released worlds first Smartphone?",
+				options: ["Blackberry", "IBM", "Apple", "Nokia"],
+				answer: "IBM",
+				description: ""
+			},
+			c2Q5: {
+				question: "What was Jeff Bezos original name idea for Amazon website?",
+				options: ["Shazam", "Nile", "Cadabra", "Volga"],
+				answer: "Cadabra",
+				description: ""
+			},
+			c2Q6: {
+				question: "What did Nintendo orignally manufacture?",
+				options: ["Post Cards", "Playing Cards", "Business Cards", "Greeting Cards"],
+				answer: "Playing Cards",
+				description: ""
+			},
+			c2Q7: {
+				question: "Which bird is mascot for Linux?",
+				options: ["Kiwi", "Dove", "Penguin", "Finch"],
+				answer: "Penguin",
+				description: ""
+			},
+			c2Q8: {
+				question: "1024 Gigabytes in 1 Terabyte, what is 1024 Terabytes?",
+				options: ["Xenobyte", "Petabyte", "Jedabyte", "Qesobyte"],
+				answer: "Petabyte",
+				description: ""
+			},	
+			c2Q9: {
+				question: "First web browser is....",
+				options: ["Nexus", "Internet Explorer", "Netscape", "Mosaic"],
+				answer: "Nexus",
+				description: ""
+			},
+			c2Q10: {
+				question: "World's first programmer is...",
+				options: ["Charles Babbage", "Ada Lovelace", "Michael Faraday", "Grace Hopper"],
+				answer: "Ada Lovelace",
+				description: ""
+			}																					
+
 		}, 
 		cat3: {
-			EQ1: {
-				question: "Equestion 1",
-				options: ["D1-opt1", "D1-opt2", "D1-opt3", "D1-opt4"],
-				answer: "D1-opt1"
+			c3Q1: {
+				question: "How many hours is the runtime for longest movie "The cure for Insomnia"",
+				options: ["33 Hrs", "12 Hrs", "57 Hrs", "85 Hrs"],
+				answer: "85 Hrs",
+				description: ""
 			},
-			EQ2: {
-				question: "Equestion 2",
-				options: ["D2-opt1", "D2-opt2", "D2-opt3", "D2-opt4"],
-				answer: "D2-opt1"
+			c3Q2: {
+				question: "Which is the longest running Animated series in TV?",
+				options: ["Futurama", "South Park", "The Simpsons", "Family Guy"],
+				answer: "The Simpsons",
+				description: ""
 			},
-			EQ3: {
-				question: "Equestion 3",
-				options: ["D3-opt1", "D3-opt2", "D3-opt3", "D3-opt4"],
-				answer: "D3-opt1"
-			} 
+			c3Q3: {
+				question: "What is the full name of Minnie Mouse?",
+				options: ["Minalla", "Minerva", "Minette", "Mineko"],
+				answer: "Minerva",
+				description: ""
+			},
+			c3Q4: {
+				question: "Person who voice for Yoda in Star Wars also voiced for which Muppet?",
+				options: ["Kermit the Frog", "Camilla the Chicken", "Miss Piggy", "Fozzi Bear"],
+				answer: "Miss Piggy",
+				description: ""
+			},
+			c3Q5: {
+				question: "Which of the below movie happen in a fictional country named Sokovia?",
+				options: ["Avengers - Age of Ultron", "Guardians of the Galaxy", "Thor Dark World", "Captain America - The Winter Soldier"],
+				answer: "Avengers - Age of Ultron",
+				description: ""
+			},
+			c3Q6: {
+				question: "Which is the first A Capella group to win Grammy?",
+				options: ["Rockapella", " The Filharmonic", "Pentatonix", "Straight No Chasers"],
+				answer: "Pentatonix",
+				description: ""
+			},
+			c3Q7: {
+				question: "",
+				options: [],
+				answer: "",
+				description: ""
+			},												
+			c3Q8: {
+				question: "",
+				options: [],
+				answer: "",
+				description: ""
+			},
+			c3Q9: {
+				question: "",
+				options: [],
+				answer: "",
+				description: ""
+			},
+			c3Q10: {
+				question: "",
+				options: [],
+				answer: "",
+				description: ""
+			},				
 		},
 		cat4: {
 			EQ1: {
